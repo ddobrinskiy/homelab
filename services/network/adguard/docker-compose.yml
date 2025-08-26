@@ -1,0 +1,22 @@
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguard
+    restart: unless-stopped
+    ports:
+      - "${ADGUARD_PORT_53:-53}:53/tcp"
+      - "${ADGUARD_PORT_53:-53}:53/udp"
+      - "${ADGUARD_PORT_WEB:-3000}:3000/tcp"
+      - "${ADGUARD_PORT_ADMIN:-3001}:3001/tcp"
+      #- "80:80/tcp" # set the local port
+    volumes:
+      - ../../../volumes/adguard/work:/opt/adguardhome/work
+      - ../../../volumes/adguard/conf:/opt/adguardhome/conf
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+    networks:
+      - adguard-net
+
+networks:
+  adguard-net:
+    driver: bridge
