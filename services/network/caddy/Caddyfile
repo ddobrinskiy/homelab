@@ -1,0 +1,69 @@
+{
+        email admin@gnez.do
+        auto_https off
+}
+
+# Root domain(s) to Homepage
+http://gnez.do, http://www.gnez.do {
+        reverse_proxy 192.168.0.42:3005
+}
+
+# Subdomain wildcard: {service}.gnez.do
+http://*.gnez.do {
+        @wud host wud.gnez.do
+        handle @wud {
+                reverse_proxy 192.168.0.42:3038
+        }
+
+        @kuma host uptime-kuma.gnez.do
+        handle @kuma {
+                reverse_proxy 192.168.0.42:3002
+        }
+
+        @jellyfin host jellyfin.gnez.do
+        handle @jellyfin {
+                reverse_proxy 192.168.0.42:8096
+        }
+
+        @radarr host radarr.gnez.do
+        handle @radarr {
+                reverse_proxy 192.168.0.42:7878
+        }
+
+        @sonarr host sonarr.gnez.do
+        handle @sonarr {
+                reverse_proxy 192.168.0.42:8989
+        }
+
+        @prowlarr host prowlarr.gnez.do
+        handle @prowlarr {
+                reverse_proxy 192.168.0.42:9696
+        }
+
+        @transmission host transmission.gnez.do
+        handle @transmission {
+                reverse_proxy 192.168.0.42:29091
+        }
+
+        @adguard host adguard.gnez.do
+        handle @adguard {
+                reverse_proxy 192.168.0.42:3000
+        }
+
+        @transmissionlocal host transmission-local.gnez.do
+        handle @transmissionlocal {
+                reverse_proxy 192.168.0.42:9091
+        }
+
+        @dash host dash.gnez.do
+        handle @dash {
+                reverse_proxy 192.168.0.42:3005
+        }
+
+        # Fallback for any other subdomain -> Homepage
+        handle {
+                reverse_proxy 192.168.0.42:3005
+        }
+}
+
+
