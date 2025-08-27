@@ -1,0 +1,25 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:${JELLYFIN_PORT:-8096}:8096/tcp"
+      - "0.0.0.0:${JELLYFIN_PORT_DLNA:-1900}:1900/udp"
+      - "0.0.0.0:${JELLYFIN_PORT_CLIENT:-7359}:7359/udp"
+    volumes:
+      - ../../../volumes/jellyfin/config:/config
+      - ../../../volumes/jellyfin/cache:/cache
+      - ../../../volumes/jellyfin/logs:/logs
+      - ${MEDIA_PATH:-~/Media}:/media:ro
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PUBLISHED_SERVER_URL:-}
+    networks:
+      - jellyfin-net
+
+networks:
+  jellyfin-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
