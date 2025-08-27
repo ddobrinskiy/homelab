@@ -1,0 +1,26 @@
+services:
+  wud:
+    image: ghcr.io/getwud/wud:latest
+    container_name: wud
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:${WUD_PORT:-3000}:3000/tcp"
+    environment:
+      - TZ=${TIMEZONE:-Europe/Moscow}
+      - WUD_LOG_LEVEL=${WUD_LOG_LEVEL:-info}
+      - WUD_WATCHER_LOCAL_SOCKET=/var/run/docker.sock
+      #- WUD_AUTH_BASIC_ADMIN_USER=${WUD_AUTH_BASIC_ADMIN_USER:-}
+      #- WUD_AUTH_BASIC_ADMIN_HASH=${WUD_AUTH_BASIC_ADMIN_HASH:-}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ../../../volumes/wud/store:/store
+    networks:
+      - wud-net
+
+networks:
+  wud-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
+
+

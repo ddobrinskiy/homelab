@@ -64,3 +64,12 @@
         password: {{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}
     
 
+- Monitoring:
+  - WUD:
+      href: http://192.168.0.42:3038
+      icon: docker.png
+      description: What's Up Docker?
+      widget:
+        type: wud
+        url: http://192.168.0.42:3038
+
