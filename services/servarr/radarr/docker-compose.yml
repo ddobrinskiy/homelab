@@ -1,0 +1,22 @@
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE:-Europe/Moscow}
+    volumes:
+      - ../../../volumes/radarr/config:/config
+      - ${MEDIA_PATH:-~/Media}:/media:rw
+    ports:
+      - "0.0.0.0:${RADARR_PORT:-7878}:7878"
+    networks:
+      - media-net
+
+networks:
+  media-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
