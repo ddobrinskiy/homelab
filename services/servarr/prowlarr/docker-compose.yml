@@ -1,0 +1,24 @@
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=${UMASK:-022}
+      - TZ=${TIMEZONE:-Europe/Moscow}
+    volumes:
+      - ../../../volumes/prowlarr/config:/config
+    ports:
+      - "0.0.0.0:${PROWLARR_PORT:-9696}:9696"
+    networks:
+      - prowlarr-net
+
+networks:
+  prowlarr-net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
+
+
