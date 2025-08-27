@@ -6,10 +6,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - UMASK=${UMASK:-022}
       - TZ=${TIMEZONE:-Europe/Moscow}
     volumes:
       - ../../../volumes/radarr/config:/config
-      - ${MEDIA_PATH:-~/Media}:/media:rw
+      - ${DATA_ROOT:-/home/dzlob/media}:/data:rw
     ports:
       - "0.0.0.0:${RADARR_PORT:-7878}:7878"
     networks:
