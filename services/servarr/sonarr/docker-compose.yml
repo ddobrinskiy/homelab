@@ -1,7 +1,7 @@
 services:
-  radarr:
-    image: lscr.io/linuxserver/radarr:latest
-    container_name: radarr
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -9,11 +9,11 @@ services:
       - UMASK=${UMASK:-022}
       - TZ=${TIMEZONE:-Europe/Moscow}
     volumes:
-      - ../../../volumes/radarr/config:/config
+      - ../../../volumes/sonarr/config:/config
       - ${DATA_ROOT:-/home/dzlob/media}:/data:rw
       - /home/dzlob/media:/home/dzlob/media:rw
     ports:
-      - "0.0.0.0:${RADARR_PORT:-7878}:7878"
+      - "0.0.0.0:${SONARR_PORT:-8989}:8989"
     networks:
       - media-net
 
@@ -22,3 +22,5 @@ networks:
     driver: bridge
     driver_opts:
       com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
+
+

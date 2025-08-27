@@ -15,6 +15,14 @@
         type: radarr
         url: http://192.168.0.42:7878
         key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+  - Sonarr:
+      href: http://192.168.0.42:8989
+      icon: sonarr.png
+      description: TV automation
+      widget:
+        type: sonarr
+        url: http://192.168.0.42:8989
+        key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
   - Prowlarr:
       href: http://192.168.0.42:9696
       icon: prowlarr.png
