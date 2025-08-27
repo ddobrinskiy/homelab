@@ -11,7 +11,7 @@ services:
       - ../../../volumes/jellyfin/config:/config
       - ../../../volumes/jellyfin/cache:/cache
       - ../../../volumes/jellyfin/logs:/logs
-      - ${MEDIA_PATH:-~/Media}:/media:ro
+      - ${MEDIA_PATH:-~/media}:/media:ro
     environment:
       - TZ=${TIMEZONE:-UTC}
       - JELLYFIN_PublishedServerUrl=${JELLYFIN_PUBLISHED_SERVER_URL:-}
