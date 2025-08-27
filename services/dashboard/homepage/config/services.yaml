@@ -34,18 +34,33 @@
 
 - Network:
   - AdGuard:
-      href: http://192.168.0.42:3001
+      href: http://192.168.0.42:3000
       icon: adguard-home.png
       description: DNS sinkhole
       widget:
         type: adguard
-        url: http://192.168.0.42:3001
+        url: http://192.168.0.42:3000
         username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
         password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
 
 - Downloads:
-  - Transmission:
+  - Transmission Local:
       href: http://192.168.0.42:9091
       icon: transmission.png
       description: BitTorrent client
+      widget:
+        type: transmission
+        url: http://192.168.0.42:9091
+        username: {{HOMEPAGE_VAR_TRANSMISSION_USERNAME}}
+        password: {{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}
+  - Transmission Docker:
+      href: http://192.168.0.42:29091
+      icon: transmission.png
+      description: BitTorrent client
+      widget:
+        type: transmission
+        url: http://192.168.0.42:29091
+        username: {{HOMEPAGE_VAR_TRANSMISSION_USERNAME}}
+        password: {{HOMEPAGE_VAR_TRANSMISSION_PASSWORD}}
+    
 

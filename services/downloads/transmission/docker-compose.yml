@@ -15,6 +15,7 @@ services:
       - ../../../volumes/transmission/config:/config
       - /home/dzlob/media/downloads:/downloads
       - /home/dzlob/media:/home/dzlob/media:rw
+      - /home/dzlob/Documents:/home/dzlob/Documents:rw
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "0.0.0.0:${TRANSMISSION_PORT_WEBUI:-9091}:9091"
