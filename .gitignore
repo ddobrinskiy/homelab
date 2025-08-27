@@ -47,4 +47,7 @@ Thumbs.db
 # SSL certificates (if self-generated)
 *.crt
 *.key
-*.pem*.xz
+*.pem
+
+# VM images
+*.xz
