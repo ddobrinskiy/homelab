@@ -1,0 +1,11 @@
+title: Homelab Dashboard
+favicon: https://gethomepage.dev/favicon.ico
+theme: dark
+color: slate
+headerStyle: clean
+statusStyle: dot
+providers:
+  # enable docker integrations via socket
+  docker:
+    socket: /var/run/docker.sock
+

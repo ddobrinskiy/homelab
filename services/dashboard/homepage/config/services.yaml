@@ -1,0 +1,40 @@
+- Media:
+  - Jellyfin:
+      href: http://192.168.0.42:8096
+      icon: jellyfin.png
+      description: Media server
+      widget:
+        type: jellyfin
+        url: http://192.168.0.42:8096
+  - Radarr:
+      href: http://192.168.0.42:7878
+      icon: radarr.png
+      description: Movies automation
+      widget:
+        type: radarr
+        url: http://192.168.0.42:7878
+        key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+  - Prowlarr:
+      href: http://192.168.0.42:9696
+      icon: prowlarr.png
+      description: Indexer manager
+      widget:
+        type: prowlarr
+        url: http://192.168.0.42:9696
+        key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+
+- Network:
+  - AdGuard:
+      href: http://192.168.0.42:3001
+      icon: adguard-home.png
+      description: DNS sinkhole
+      widget:
+        type: adguard
+        url: http://192.168.0.42:3001
+
+- Downloads:
+  - Transmission:
+      href: http://192.168.0.42:9091
+      icon: transmission.png
+      description: BitTorrent client
+
